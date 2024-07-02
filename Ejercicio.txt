@@ -1,0 +1,101 @@
+UT9_PD4:
+
+Ejercicio1:
+
+Incrementos recomendados para ShellSort:
+
+Secuencia de Marcin Ciura:
+
+ - Esta secuencia es altamente efectiva y ha sido ampliamente adoptada debido a su excelente rendimiento en casos promedio.
+   - Comienza con los incrementos: 1, 4, 10, 23, 57, 132, 301, 701. Los incrementos posteriores se obtienen multiplicando el último por 2.25 y redondeando hacia abajo.
+
+Link: 
+https://stackoverflow.com/questions/2539545/fastest-gap-sequence-for-shell-sort
+
+Secuencia de Tokuda:
+   - Definida por la fórmula h_k = ⌈ (9 * 4^k - 9 * 2^k + 1) / 5 ⌉.
+   - Ejemplos de incrementos incluyen: 1, 4, 9, 20, 46, 103, 233, 525.
+
+Link: https://stackoverflow.com/questions/21508595/shellsort-2-48k-1-vs-tokudas-sequence
+
+Secuencia de Sedgewick:
+   - Incrementos como 1, 5, 19, 41, 109, 209, 505, 929.
+   - Optimizada para mejorar el rendimiento teórico y práctico.
+
+Link:
+
+https://stackoverflow.com/questions/69170161/is-sedgewicks-shell-sort-the-most-optimal-one
+
+
+Ejercicio2:
+
+Funciones de Pivote Recomendadas para QuickSort
+
+1. Mediana de Tres:
+   - Una técnica común es la "mediana de tres", que selecciona el pivote como la mediana del primer, último y elemento medio del array. Esta técnica ayuda a evitar el peor caso de tiempo de ejecución en arrays ya ordenados o casi ordenados.
+
+Link: https://www.blogcyberini.com/2018/08/quicksort-mediana-de-tres.html
+2. Pivote Aleatorio:
+
+   - Elegir un pivote aleatorio puede ser efectivo para garantizar un tiempo de ejecución promedio de O(n log n). Esto ayuda a reducir la probabilidad de caer en el peor caso de O(n^2).
+
+Link: https://www.geeksforgeeks.org/quicksort-using-random-pivoting/
+
+3. Mediana de Medianas:
+
+   - Para obtener un tiempo de ejecución más cercano a O(n log n) en el peor caso, se puede usar la mediana de medianas, que selecciona el pivote como la mediana de un conjunto de medianas de subarrays.
+
+Link: https://www.linkedin.com/advice/0/what-advantages-disadvantages-median-of-medians-algorithm?lang=es&originalSubdomain=es
+
+Implementaciones en Lenguajes Modernos
+
+1. Java:
+   - A partir de Java 7, la implementación de Arrays.sort utiliza QuickSort de doble pivote, desarrollado por Vladimir Yaroslavskiy. Este enfoque selecciona dos pivotes y particiona el array en tres partes, lo que mejora el rendimiento en comparación con el Quicksort de un solo pivote
+
+
+2. C#:
+   - En .NET, la implementación de QuickSort también utiliza técnicas avanzadas de selección de pivote, incluyendo la mediana de tres y pivotes aleatorios, para mejorar el rendimiento y reducir la probabilidad del peor caso.
+
+
+3. Python:
+   - La función sorted() de Python y el método sort() de las listas utilizan Timsort, un algoritmo híbrido derivado de MergeSort y QuickSort. Para QuickSort, se utilizan técnicas como la mediana de tres para la selección de pivotes.
+  
+Ejercicio 3:
+
+
+El algoritmo propuesto va a ser usar un conjunto para la verificación:
+
+Una forma eficiente de determinar si dos conjuntos son disjuntos es utilizando una estructura de datos de conjunto (HashSet)
+
+para verificar la existencia de elementos en el otro conjunto.
+
+
+funcion sonDisjuntos(conjunto A, conjunto B)
+    si tamaño(A) > tamaño(B) entonces
+        intercambiar(A, B)
+    fin si
+    
+    conjuntoHash := nuevo Conjunto()
+    
+    para cada elemento en A hacer
+        conjuntoHash.agregar(elemento)
+    fin para
+    
+    para cada elemento en B hacer
+        si conjuntoHash.contiene(elemento) entonces
+            retornar falso
+        fin si
+    fin para
+    
+    retornar verdadero
+fin funcion
+
+
+
+Peor caso:
+
+El peor caso del algoritmo ocurre cuando hay que verificar todos los elementos de B y ninguno de ellos está presente en A. En este caso, el tiempo de ejecución total del algoritmo es la suma del tiempo de inserción y verificación.
+
+O(m) + O(n) = O(m + n)
+
+Dado que m es sustancialmente menor que n, el tiempo de ejecución en términos de n sigue siendo lineal, es decir, O(n).
